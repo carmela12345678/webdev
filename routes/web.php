@@ -16,7 +16,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/landing', [ViewController::class, 'landing']);
+// Route::get('/landing', [ViewController::class, 'landing']);
 
 Route::get('/admin', [ViewController::class, 'home']);
 

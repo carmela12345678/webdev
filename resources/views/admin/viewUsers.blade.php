@@ -63,7 +63,7 @@
                             @if($value['role'] == "Member")
                     <tr>
                         <td>{{$value['record_id']}}</td>
-                        <td>{{$value['lastname']}}, {{$value['firstname']}}</td>
+                        <td>{{$value['lname']}}, {{$value['fname']}}</td>
                         <td>{{$value['address']}}</td>
                         <td>
                             <form action="census-view" method="POST">
@@ -95,14 +95,7 @@
 
 </div>
 
-<div id="overlay" onclick="off()">
-  <div id="text">Overlay Text</div>
-</div>
 
-<div style="padding:20px">
-  <h2>Overlay with Text</h2>
-  <button onclick="on()">Turn on overlay effect</button>
-</div>
 
 <script>
 function on() {

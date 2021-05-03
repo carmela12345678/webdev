@@ -44,7 +44,7 @@
                             @foreach($records as $value)
                     <tr>
                         <td>{{$value['record_id']}}</td>
-                        <td>{{$value['lname']}}, {{$value['fname']}}</td>
+                        <td>{{$value['lastname']}}, {{$value['firstname']}}</td>
                         <td>{{$value['address']}}</td>
                         <td>
                             <form action="census-view" method="POST">
