@@ -43,7 +43,8 @@ class CensusRecordController extends Controller
     public function store(Request $request)
     {
         //
-        $user = $request->user();
+        $flag = 0;
+        $user = $request->user(); // Pag kuha sa instance sa logged in user
         $fname = $request->input('fname');
         $lname = $request->input('lname');
         $age = $request->input('age');
@@ -61,16 +62,19 @@ class CensusRecordController extends Controller
         if( $recordId == 0){
             $record = new Record;
             $record->record_status = "unverified";
-            $record->user_id = $user->id;
+            $record->user_id = $user->id; // Access sa user ID
 
             $record->save();
-            $censusRec->record_id = $record->id;;
+            $censusRec->record_id = $record->id;
+            $flag = 1;
         }else{
-            $id = Record::find($recordId);
-            $censusRec->record_id = $id->id;
+            $censusRec->record_id = $recordId;
         }
+        // else{
+        //     $id = Record::find($recordId);
+        //     $censusRec->record_id = $id->id;
+        // }
 
-        $censusRec->record_id = $record->id;
         $censusRec->firstname = $fname;
         $censusRec->lastname = $lname;
         $censusRec->age = $age;
@@ -83,8 +87,14 @@ class CensusRecordController extends Controller
         $censusRec->sourceOfIncome = $sourceOfIncome;
 
         $censusRec->save();
+        
+        if($flag == 1){
+            return redirect('/AddRecAdmin');
+        }else{
+            return redirect('/unverifiedCensusAdmin');
+        }
 
-        return redirect('/AddRecAdmin');
+        
     }
 
     /**
@@ -99,6 +109,14 @@ class CensusRecordController extends Controller
         $id = $request->input('id');
         $records = CensusRecord::all()->where('record_id',$id);
         return view('/admin/censusRec')->with('records', $records);
+    }
+
+    public function addMember(Request $request)
+    {
+        //
+        $id = $request->input('id');
+        $records = CensusRecord::all()->where('record_id',$id);
+        return view('/admin/AddMemberAdmin')->with('records', $records);
     }
 
     /**

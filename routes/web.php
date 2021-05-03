@@ -32,6 +32,11 @@ Route::get('/censusRec', function () {
     return view('admin/censusRec');
 });
 
+Route::get('/AddMemberAdmin', function () {
+    return view('admin/AddMemberAdmin');
+});
+
+
 // Route::get('/users', function () {
 //     return view('admin/users');
 // });
@@ -69,6 +74,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::post('new-rec', [CensusRecordController::class, 'store']);
 Route::post('census-view', [CensusRecordController::class, 'show']);
 Route::post('census-delete', [CensusRecordController::class, 'destroy']);
+Route::post('add-member', [CensusRecordController::class, 'addMember']);
 
 
 Auth::routes();

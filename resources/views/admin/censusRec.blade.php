@@ -19,8 +19,15 @@
                         <input type="submit" name='searchUnverified' class="btn-primary" placeholder="Search">
                     </form>
                     </div>
+                    @if(!empty($records))
+                            @foreach($records as $value)
                     <div align="right">
-                        <a type="button" href="/home">Add new member</a>
+                        @if($value['role'] == "Head")
+                        <form action="add-member" method="POST">
+                            @csrf
+                            <input type="hidden" name="id" value="{{$value['record_id']}}">
+                            <input type="submit" value="Add new member" class="btn-info">
+                        </form>
                     </div>
                 </div>
                 <div class="table-responsive" style="margin-right:20px; margin-left:20px;">
@@ -28,9 +35,8 @@
                         <thead class="thead-dark">
                             <tr>
                             <td scope="col"><h5>Head of Household Information</h5><br>
-                            @if(!empty($records))
-                            @foreach($records as $value)
-                                @if($value['role'] == "Head")
+                            
+                                
                                     <label for="Name">Name: {{$value['lastname']}}, {{$value['firstname']}}</label><br>
                                     <label for="Age">Age: {{$value['age']}} years old</label><br>
                                     <label for="Gender">Gender: {{$value['gender']}}</label><br>

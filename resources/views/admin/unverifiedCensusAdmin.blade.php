@@ -42,6 +42,8 @@
                     
                         @if(!empty($records))
                             @foreach($records as $value)
+
+                            @if($value['role'] == "Head")
                     <tr>
                         <td>{{$value['record_id']}}</td>
                         <td>{{$value['lastname']}}, {{$value['firstname']}}</td>
@@ -69,6 +71,7 @@
                             </form>
                         </td>
                     </tr>
+                            @endif
                             @endforeach
 
                         @endif
