@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\CensusRecordController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,37 +16,33 @@ use App\Http\Controllers\CensusRecordController;
 |
 */
 
-Route::get('/', [ViewController::class, 'landing']);
+Route::get('/landing', [ViewController::class, 'landing']);
 
 Route::get('/admin', [ViewController::class, 'home']);
 
-Route::post('census-delete', [CensusRecordController::class, 'destroy']);
-
 Route::resource('/censusRecord', CensusRecordController::class);
 
-Route::get('/user', function () {
-    return view('user/welcomeUser');
-});
+Route::get('/user', [ViewController::class, 'userLanding']);
 
-Route::get('/AddRecAdmin', function () {
-    return view('admin/AddRecAdmin');
-});
+// Route::get('/AddRecAdmin', function () {
+//     return view('admin/AddRecAdmin');
+// });
 
 Route::get('/censusRec', function () {
     return view('admin/censusRec');
 });
 
-Route::get('/users', function () {
-    return view('admin/users');
-});
+// Route::get('/users', function () {
+//     return view('admin/users');
+// });
 
-Route::get('/viewCensusAdmin', function () {
-    return view('admin/viewCensusAdmin');
-});
+// Route::get('/viewCensusAdmin', function () {
+//     return view('admin/viewCensusAdmin');
+// });
 
-Route::get('/unverifiedCensusAdmin', function () {
-    return view('admin/unverifiedCensusAdmin');
-});
+// Route::get('/unverifiedCensusAdmin', function () {
+//     return view('admin/unverifiedCensusAdmin');
+// });
 
 Route::get('/addAccount', function () {
     return view('admin/addAccount');
@@ -62,6 +59,24 @@ Route::get('/censusRecUser', function () {
 Route::get('/unverifiedUser', function () {
     return view('user/unverifiedUser');
 });
+<<<<<<< HEAD
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+=======
+
+
+Route::post('new-rec', [CensusRecordController::class, 'store']);
+Route::post('census-view', [CensusRecordController::class, 'show']);
+Route::post('census-delete', [CensusRecordController::class, 'destroy']);
+
+
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/AddRecAdmin', [HomeController::class, 'addRecAdmin'])->name('AddRecAdmin');
+Route::get('/unverifiedCensusAdmin', [HomeController::class, 'unverifiedCensusAdmin'])->name('unverifiedCensusAdmin');
+Route::get('/userAccounts', [HomeController::class, 'show'])->name('UserAccounts');
+Route::get('/viewCensusAdmin', [HomeController::class, 'viewCensusAdmin'])->name('ViewCensusAdmin');
+Route::get('/censusRec', [HomeController::class, 'censusRecord'])->name('CensusRecord');
+>>>>>>> 3017d2a7e7935281ad712fb2054a7bc06bd4c858

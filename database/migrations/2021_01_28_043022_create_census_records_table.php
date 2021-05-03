@@ -14,10 +14,11 @@ class CreateCensusRecordsTable extends Migration
     public function up()
     {
         Schema::create('census_records', function (Blueprint $table) {
-            $table->id();
-            $table->integer('record_no');
-            $table->char('firstname',32);
-            $table->char('lastname',32);
+            $table->increments('id');
+            $table->integer('record_id')->unsigned();
+            $table->foreign('record_id')->references('id')->on('records');
+            $table->string('firstname',32);
+            $table->string('lastname',32);
             $table->integer('age');
             $table->enum('gender', ['Female','Male']);
             $table->enum('civil_status', ['Single','Married','Widowed']);
@@ -25,6 +26,7 @@ class CreateCensusRecordsTable extends Migration
             $table->date('birth_date');
             $table->text('education');
             $table->enum('role', ['Head','Member']);
+            $table->integer('sourceOfIncome');
             $table->timestamps();
         });
     }

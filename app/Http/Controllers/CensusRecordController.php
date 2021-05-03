@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CensusRecord;
+use App\Models\Record;
 
 class CensusRecordController extends Controller
 {
@@ -16,7 +17,7 @@ class CensusRecordController extends Controller
     {
         //
         $records = CensusRecord::all();
-        return view('admin/unverifiedCensusAdmin')->with('records',$records);
+        return redirect('/unverifiedCensusAdmin')->with('records',$records);
     }
 
     /**
@@ -38,6 +39,47 @@ class CensusRecordController extends Controller
     public function store(Request $request)
     {
         //
+        $fname = $request->input('fname');
+        $lname = $request->input('lname');
+        $age = $request->input('age');
+        $gender = $request->input('gender');
+        $status = $request->input('status');
+        $add = $request->input('add');
+        $dateOfBirth = $request->input('dateOfBirth');
+        $educational = $request->input('educational');
+        $role = $request->input('role');
+        $sourceOfIncome = $request->input('sourceOfIncome');
+        $recordId = $request->input('record');
+       
+        $censusRec = new CensusRecord;
+
+        if( $recordId == 0){
+            $record = new Record;
+            $record->record_status = "unverified";
+            // $record->user_id = 1;
+
+            $record->save();
+            $censusRec->record_id = $record->id;;
+        }else{
+            $id = Record::find($recordId);
+            $censusRec->record_id = $id->id;
+        }
+
+        $censusRec->record_id = $record->id;
+        $censusRec->firstname = $fname;
+        $censusRec->lastname = $lname;
+        $censusRec->age = $age;
+        $censusRec->gender = $gender;
+        $censusRec->civil_status = $status;
+        $censusRec->address = $add;
+        $censusRec->birth_date = $dateOfBirth;
+        $censusRec->education = $educational;
+        $censusRec->role = $role;
+        $censusRec->sourceOfIncome = $sourceOfIncome;
+
+        $censusRec->save();
+
+        return redirect('/AddRecAdmin');
     }
 
     /**
@@ -46,9 +88,12 @@ class CensusRecordController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
         //
+        $id = $request->input('id');
+        $records = CensusRecord::all()->where('record_id',$id);
+        return view('/admin/censusRec')->with('records', $records);
     }
 
     /**

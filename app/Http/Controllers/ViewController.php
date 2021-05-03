@@ -14,5 +14,8 @@ class ViewController extends Controller
     Function home(){
         return view('admin/welcomeAdmin');
     }
+    Function userLanding(){
+        return view('user/welcomeUser');
+    }
 
 }

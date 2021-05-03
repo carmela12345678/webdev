@@ -1,12 +1,11 @@
 <?php
-//HELLO CARMELA//-----------
-//HELLO NICOLE//------------
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CensusRecord extends Model
+class census_records extends Model
 {
     use HasFactory;
 }
