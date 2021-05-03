@@ -60,6 +60,14 @@
                             <input type="submit" value="Delete" class="btn-danger">
                             </form>
                         </td>
+
+                        <td>
+                            <form action="#" method="POST">
+                            @csrf
+                            <input type="hidden" name="id" value="{{$value['id']}}">
+                            <input type="submit" value="Verify" class="btn-primary">
+                            </form>
+                        </td>
                     </tr>
                             @endforeach
 
