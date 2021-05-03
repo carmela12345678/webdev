@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-=======
 use App\Models\User;
 use App\Models\CensusRecord;
->>>>>>> 3017d2a7e7935281ad712fb2054a7bc06bd4c858
+
 
 class HomeController extends Controller
 {
@@ -30,8 +28,7 @@ class HomeController extends Controller
     {
         return view('home');
     }
-<<<<<<< HEAD
-=======
+
 
     public function addRecAdmin()
     {
@@ -59,5 +56,5 @@ class HomeController extends Controller
     {
         return redirect('census-view');
     }
->>>>>>> 3017d2a7e7935281ad712fb2054a7bc06bd4c858
+
 }

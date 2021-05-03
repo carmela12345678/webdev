@@ -59,11 +59,11 @@ Route::get('/censusRecUser', function () {
 Route::get('/unverifiedUser', function () {
     return view('user/unverifiedUser');
 });
-<<<<<<< HEAD
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-=======
+
 
 
 Route::post('new-rec', [CensusRecordController::class, 'store']);
@@ -79,4 +79,4 @@ Route::get('/unverifiedCensusAdmin', [HomeController::class, 'unverifiedCensusAd
 Route::get('/userAccounts', [HomeController::class, 'show'])->name('UserAccounts');
 Route::get('/viewCensusAdmin', [HomeController::class, 'viewCensusAdmin'])->name('ViewCensusAdmin');
 Route::get('/censusRec', [HomeController::class, 'censusRecord'])->name('CensusRecord');
->>>>>>> 3017d2a7e7935281ad712fb2054a7bc06bd4c858
+
