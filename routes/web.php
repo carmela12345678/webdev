@@ -62,3 +62,6 @@ Route::get('/censusRecUser', function () {
 Route::get('/unverifiedUser', function () {
     return view('user/unverifiedUser');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
