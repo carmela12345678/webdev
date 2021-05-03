@@ -8,6 +8,10 @@ use App\Models\Record;
 
 class CensusRecordController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -39,6 +43,7 @@ class CensusRecordController extends Controller
     public function store(Request $request)
     {
         //
+        $user = $request->user();
         $fname = $request->input('fname');
         $lname = $request->input('lname');
         $age = $request->input('age');
@@ -56,7 +61,7 @@ class CensusRecordController extends Controller
         if( $recordId == 0){
             $record = new Record;
             $record->record_status = "unverified";
-            // $record->user_id = 1;
+            $record->user_id = $user->id;
 
             $record->save();
             $censusRec->record_id = $record->id;;

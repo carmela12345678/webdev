@@ -18,6 +18,7 @@
                     <form action="new-rec" method='POST'>
                     @csrf
                         <input type="hidden" name="record" value="0">
+                        <input type="hidden" name="id" value="Auth::user()->id">
                         <div class="form-row">
                             <div class="col"><br>
                                 <label for="formGroupExampleInput">First Name:</label>
