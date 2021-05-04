@@ -20,7 +20,6 @@
                     <form action="update-rec" method='POST'>
                     @csrf
                         <input type="hidden" name="id" value="{{$value['id']}}">
-                        <input type="hidden" name="record" value="{{$value['record_id']}}">
                         <div class="form-row">
                             <div class="col"><br>
                                 <label for="formGroupExampleInput">First Name:</label>
@@ -63,7 +62,7 @@
                             <div class="col">
                                 <label for="role">Household Role:</label>
                                 <select class="form-control" name="role" id="role">
-                                    <option value="{{$value['birth_date']}}">{{$value['role']}}</option>
+                                    <option value="{{$value['role']}}">{{$value['role']}}</option>
                                 </select>
                             </div>
                         </div><br>

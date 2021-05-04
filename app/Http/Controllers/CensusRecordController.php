@@ -147,12 +147,9 @@ class CensusRecordController extends Controller
         $educational = $request->input('educational');
         $role = $request->input('role');
         $sourceOfIncome = $request->input('sourceOfIncome');
-        $recordId = $request->input('record');
-        //$data = array("id" => $id, "record_id" =>  $recordId, "firstname" => $fname, "lastname" => $lname, "age" => $age, "gender" => $gender, "civil_status" => $status, "address" => $add, "birth_date" => $dateOfBirth, "education" => $educational, "role" => $role, "sourceOfIncome" => $sourceOfIncome, "updated_at" => now());
        
-        $censusRec = new CensusRecord;
-        $censusRec->id = $id;
-        $censusRec->record_id = $recordId;
+        $censusRec = CensusRecord::find($id);
+
         $censusRec->firstname = $fname;
         $censusRec->lastname = $lname;
         $censusRec->age = $age;
@@ -163,10 +160,8 @@ class CensusRecordController extends Controller
         $censusRec->education = $educational;
         $censusRec->role = $role;
         $censusRec->sourceOfIncome = $sourceOfIncome;
-        $censusRec->updated_at = now();
 
-
-        CensusRecord::find($id)->update($censusRec);
+        $censusRec->save();
 
         return redirect('/unverifiedCensusAdmin');
     }
