@@ -119,15 +119,56 @@ class CensusRecordController extends Controller
         return view('/admin/AddMemberAdmin')->with('records', $records);
     }
 
+    public function updateRecord(Request $request)
+    {
+        //
+        $id = $request->input('id');
+        $records = CensusRecord::all()->where('id',$id);
+        return view('/admin/updateCensus')->with('records', $records);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        
+        $id =  $request->input('id');
+        $fname = $request->input('fname');
+        $lname = $request->input('lname');
+        $age = $request->input('age');
+        $gender = $request->input('gender');
+        $status = $request->input('status');
+        $add = $request->input('add');
+        $dateOfBirth = $request->input('dateOfBirth');
+        $educational = $request->input('educational');
+        $role = $request->input('role');
+        $sourceOfIncome = $request->input('sourceOfIncome');
+        $recordId = $request->input('record');
+        //$data = array("id" => $id, "record_id" =>  $recordId, "firstname" => $fname, "lastname" => $lname, "age" => $age, "gender" => $gender, "civil_status" => $status, "address" => $add, "birth_date" => $dateOfBirth, "education" => $educational, "role" => $role, "sourceOfIncome" => $sourceOfIncome, "updated_at" => now());
+       
+        $censusRec = new CensusRecord;
+        $censusRec->id = $id;
+        $censusRec->record_id = $recordId;
+        $censusRec->firstname = $fname;
+        $censusRec->lastname = $lname;
+        $censusRec->age = $age;
+        $censusRec->gender = $gender;
+        $censusRec->civil_status = $status;
+        $censusRec->address = $add;
+        $censusRec->birth_date = $dateOfBirth;
+        $censusRec->education = $educational;
+        $censusRec->role = $role;
+        $censusRec->sourceOfIncome = $sourceOfIncome;
+        $censusRec->updated_at = now();
+
+
+        CensusRecord::find($id)->update($censusRec);
+
+        return redirect('/unverifiedCensusAdmin');
     }
 
     /**

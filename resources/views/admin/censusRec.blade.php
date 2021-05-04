@@ -45,10 +45,19 @@
                                     <label for="birthdate">Birthday: {{$value['birth_date']}}</label><br>
                                     <label for="education">Highest Educational Attainment: {{$value['education']}}</label><br>
                                     <label for="AnnualIncome">Annual Income: {{$value['sourceOfIncome']}}</label></td>
-                                @endif
+                            </tr>
+                            <tr><td>
+                                <div align="right">
+                                    <form action="update-record" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{$value['id']}}">
+                                        <input type="submit" value="Edit" class="btn-info">
+                                    </form>
+                                </div>
+                            </td></tr>
+                            @endif
                             @endforeach
                             @endif
-                            </tr>
                         </thead>
                         <tbody>
 
