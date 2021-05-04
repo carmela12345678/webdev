@@ -35,7 +35,7 @@
                         <div class="form-row">
                             <div class="col">
                                 <label for="civilStatus">Age:</label>
-                                <input type="number" class="form-control" name="age" placeholder="Age">
+                                <input type="age" class="form-control" name="age" placeholder="Age">
                             </div>
                             <div class="col">
                                 <label for="gender">Gender:</label>
@@ -69,7 +69,7 @@
                         <label for="educational">Highest Educational Attainment:</label>
                         <input type="text" class="form-control" name="educational" placeholder="Educational Attainment"><br>
                         <label for="sourceOfIncome">Annual Income</label>
-                        <input type="number" class="form-control" name="sourceOfIncome" placeholder="Annual Income"><br>
+                        <input type="tel" class="form-control" name="sourceOfIncome" placeholder="Annual Income"><br>
                         <label for="add">Address:</label>
                         <input type="text" class="form-control" name="add" placeholder="Address" value="{{$value['address']}}">
                         @endforeach

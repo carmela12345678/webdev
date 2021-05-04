@@ -61,7 +61,6 @@
                                 <label for="role">Household Role:</label>
                                 <select class="form-control" name="role" id="role">
                                     <option value="Head">Head</option>
-                                    <option value="Member">Member</option>
                                 </select>
                             </div>
                         </div><br>

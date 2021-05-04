@@ -25,7 +25,7 @@
                         @if($value['role'] == "Head")
                         <form action="add-member" method="POST">
                             @csrf
-                            <input type="hidden" name="id" value="{{$value['record_id']}}">
+                            <input type="hidden" name="id" value="{{$value['record_id']}}"><br>
                             <input type="submit" value="Add new member" class="btn-info">
                         </form>
                     </div>
@@ -35,7 +35,6 @@
                         <thead class="thead-dark">
                             <tr>
                             <td scope="col"><h5>Head of Household Information</h5><br>
-                            
                                 
                                     <label for="Name">Name: {{$value['lastname']}}, {{$value['firstname']}}</label><br>
                                     <label for="Age">Age: {{$value['age']}} years old</label><br>
@@ -45,15 +44,14 @@
                                     <label for="birthdate">Birthday: {{$value['birth_date']}}</label><br>
                                     <label for="education">Highest Educational Attainment: {{$value['education']}}</label><br>
                                     <label for="AnnualIncome">Annual Income: {{$value['sourceOfIncome']}}</label></td>
-                            </tr>
-                            <tr><td>
-                                <div align="right">
+                            <td>
+                             
                                     <form action="update-record" method="POST">
                                         @csrf
                                         <input type="hidden" name="id" value="{{$value['id']}}">
                                         <input type="submit" value="Edit" class="btn-info">
                                     </form>
-                                </div>
+                   
                             </td></tr>
                             @endif
                             @endforeach
@@ -110,14 +108,14 @@
 
 </div>
 
-<div id="overlay" onclick="off()">
+<!-- <div id="overlay" onclick="off()">
   <div id="text">Overlay Text</div>
 </div>
 
 <div style="padding:20px">
   <h2>Overlay with Text</h2>
   <button onclick="on()">Turn on overlay effect</button>
-</div>
+</div> -->
 
 <script>
 function on() {
