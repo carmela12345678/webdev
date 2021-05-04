@@ -124,7 +124,10 @@ class CensusRecordController extends Controller
         //
         $id = $request->input('id');
         $records = CensusRecord::all()->where('id',$id);
+
         return view('/admin/updateCensus')->with('records', $records);
+        
+        
     }
 
     /**
@@ -173,9 +176,13 @@ class CensusRecordController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        $id = $request->input('id');
+        $records = CensusRecord::all()->where('id',$id);
+
+        return view('/admin/censusDetail')->with('records', $records);
     }
 
     /**

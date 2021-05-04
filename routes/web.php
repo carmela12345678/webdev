@@ -40,6 +40,10 @@ Route::get('/updateCensus', function () {
     return view('admin/updateCensus');
 });
 
+Route::get('/censusDetail', function () {
+    return view('admin/censusDetail');
+});
+
 
 // Route::get('/users', function () {
 //     return view('admin/users');
@@ -80,6 +84,7 @@ Route::post('census-view', [CensusRecordController::class, 'show']);
 Route::post('census-delete', [CensusRecordController::class, 'destroy']);
 Route::post('add-member', [CensusRecordController::class, 'addMember']);
 Route::post('update-record', [CensusRecordController::class, 'updateRecord']);
+Route::post('updating', [CensusRecordController::class, 'update']);
 Route::post('update-rec', [CensusRecordController::class, 'edit']);
 
 

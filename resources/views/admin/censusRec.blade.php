@@ -81,7 +81,7 @@
                         <td>{{$value['lastname']}}, {{$value['firstname']}}</td>
                         <td>{{$value['address']}}</td>
                         <td>
-                            <form action="census-view" method="POST">
+                            <form action="updating" method="POST">
                                 @csrf
                                 <input type="hidden" name="id" value="{{$value['id']}}">
                                 <input type="submit" value="View" class="btn-info">
