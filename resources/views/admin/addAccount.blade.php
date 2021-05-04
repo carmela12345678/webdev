@@ -15,7 +15,7 @@
         <label for="male">Male</label><br>
         <input type="radio" name="gender" value="female">
         <label for="female">Female</label><br>
-        <input type="number" name="userAge" placeholder="age">
+        <input type="age" name="userAge" placeholder="age">
         <input type="text" name="userAdd" placeholder="Address">
         <input type="contact" name="userContact" placeholder="Contact Number">
         <input type="email" name="userEmail" placeholder="Email Address">
