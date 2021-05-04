@@ -196,7 +196,10 @@ class CensusRecordController extends Controller
         //
         $id = $request->input('id');
 
-        $record = CensusRecord::find($id);
+        $data = CensusRecord::all()->where('record_id',$id);
+        $data->delete();
+
+        $record = Record::find($id);
         $record->delete();
 
         return redirect('/censusRecord');

@@ -58,7 +58,7 @@
                         <td>
                             <form action="census-delete" method="POST">
                             @csrf
-                            <input type="hidden" name="id" value="{{$value['id']}}">
+                            <input type="hidden" name="id" value="{{$value['record_id']}}">
                             <input type="submit" value="Delete" class="btn-danger">
                             </form>
                         </td>
