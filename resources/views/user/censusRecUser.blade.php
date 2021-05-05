@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Verified Record User </title>
+	<title>Verified Records User </title>
 	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -11,34 +11,82 @@
   
 </head>
 <body>
-	<div style="background: linear-gradient(to bottom, #0099FF, #0099FF); border: 1px solid black;"><img src="Logo.png" style="border-radius:5px; margin-top:20px; margin-bottom:20px; margin-left:20px;"></div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-info mb-3">
+                <div class="card-header">
+                    <hr class="bg-info my-4">
+                    <div class="bg-info"><br>
+                    <h4 class="row justify-content-center">Verified Census Records</h4><br>
+                    </div>
+                    <hr class="bg-info my-4">
 
-    <nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background: linear-gradient(to bottom, #0099FF, #0099FF);">
-          <!-- Toggler/collapsibe Button -->
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-		    <span class="navbar-toggler-icon"></span>
-		  </button>
+                    <div align="right">
+                    <form action="searchUnverified" method='GET'>
+                        @csrf
+                        <input type="text" name='searchUnverified' placeholder="Search Record">
+                        <input type="submit" name='searchUnverified' class="btn-primary" placeholder="Search">
+                    </form>
+                    </div>
+                </div>
+                <div class="table-responsive" style="margin-right:20px; margin-left:20px;">
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                            <td scope="col">Record No.</td>
+                            <td scope="col">Family Name</td>
+                            <td scope="col">Address</td>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-	  <!-- Navbar links -->
-	  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-	    <ul class="navbar-nav">
-	      <li class="nav-item">
-	        <a class="nav-link" href="addRecUser">Add Record</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="censusRecUser">Verified Census Record</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="unverifiedUser">Unverified Census Record</a>
-	      </li>
-	    </ul>
-	  </div>
-	</nav>
-    <div>
-    <h3>Verified Data</h3>
-    <form action="searchVerified" method='GET'>
-        <input type="text" name='searchVerified' placeholder="Search Record">
-        <input type="submit" name='searchVerified'>
-    </form>
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+
+                    
+                        @if(!empty($records))
+                            @foreach($records as $value)
+
+                            @if($value['role'] == "Head")
+                    <tr>
+                        <td>{{$value['record_id']}}</td>
+                        <td>{{$value['lastname']}}, {{$value['firstname']}}</td>
+                        <td>{{$value['address']}}</td>
+                        <td>
+                            <form action="#" method="POST">
+                                @csrf
+                                <input type="hidden" name="id" value="{{$value['record_id']}}">
+                                <input type="submit" value="View" class="btn-info">
+                            </form>
+                        </td>
+                        <td>
+                            <form action="#" method="POST">
+                            @csrf
+                            <input type="hidden" name="id" value="{{$value['record_id']}}">
+                            <input type="submit" value="Delete" class="btn-danger">
+                            </form>
+                        </td>
+
+                        
+                    </tr>
+                            @endif
+                            @endforeach
+
+                        @endif
+                    </div>
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
 </body>
 </html>
